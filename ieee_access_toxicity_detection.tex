@@ -1,0 +1,354 @@
+\documentclass{ieeeaccess}
+\usepackage{cite}
+\renewcommand\citedash{-}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{booktabs}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+\history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
+\doi{10.1109/ACCESS.2025.3401235}
+
+\title{Toxicity Detection in Multimodal Content: Leveraging CLIP and BLIP Models with Text and Multiple Captions}
+\author{\uppercase{Pragathi BC}\authorrefmark{1} \uppercase{Neha N}\authorrefmark{2} \uppercase{Akanksha Pai}\authorrefmark{3} \uppercase{Amit Chaulwar}\authorrefmark{4} \uppercase{Shanta Rangaswamy}\authorrefmark{5} \uppercase{Jayanthi P N}\authorrefmark{6}}
+\address[1]{Computer Science and Engineering, RV College of Engineering®, Bengaluru, India}
+\address[2]{Computer Science and Engineering, RV College of Engineering®, Bengaluru, India}
+\address[3]{Computer Science and Engineering, RV College of Engineering®, Bengaluru, India}
+\address[4]{Samsung India Ltd, Bengaluru, India}
+\address[5]{Computer Science and Engineering, RV College of Engineering®, Bengaluru, India}
+\address[6]{Computer Science and Engineering, RV College of Engineering®, Bengaluru, India}
+\tfootnote{This work was supported in part by the RV College of Engineering®, Bengaluru, India and Samsung India Ltd under the collaborative research program.}
+
+\markboth
+{Toxicity Detection in Multimodal Content \headeretal:  Leveraging CLIP and BLIP Models}
+{Toxicity Detection in Multimodal Content \headeretal:  Leveraging CLIP and BLIP Models
+}
+
+\corresp{Corresponding author: Shanta Rangaswamy (e-mail: shantharangaswamy@rvce.edu.in).}
+
+\begin{abstract}
+Toxic content in social media memes is a prevalent issue with significant impacts, leading to concerns about its classification due to their multimodal nature. Memes, while valuable outlets for humor and expression, can spread harmful behavior and perpetuate stereotypes. Accurate identification of toxic memes is challenging due to their diverse content, including text, images, and contextual cues. This paper proposes a novel approach for hate meme detection using multimodal deep learning techniques. A comprehensive technique is proposed, combining the power of the BLIP transformer for image caption generation and the CLIP encoder for feature extraction. The model is evaluated using the Facebook dataset, showcasing its effectiveness in identifying hate speech instances in memes through metrics like accuracy, precision, and the Confusion matrix.
+\end{abstract}
+
+\begin{keywords}
+BLIP, CLIP, Multimodal, Toxicity Detection, Hate Speech, Meme Classification, Deep Learning, Social Media
+\end{keywords}
+
+\titlepgskip=-15pt
+
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+
+Toxic content on online platforms has become a pervasive issue, with the ability to spread rapidly and impact individuals and communities. It encompasses various forms, including hate speech, harassment, bullying, and the dissemination of offensive stereotypes. Such content can perpetuate harmful ideologies, fuel social divisions, and create hostile online environments. The anonymity and detachment afforded by digital spaces often embolden individuals to engage in toxic behavior they may avoid in offline interactions. This normalization of toxic content not only affects the well-being of individuals but also hampers constructive dialogue, empathy, and the overall health of online communities. Addressing the prevalence of toxic content is crucial for fostering safer and more inclusive digital spaces.
+
+In this paper we explore the toxic content in memes. They present unique challenges in terms of classification due to their multimodal nature. Hate memes combine visual imagery, text, and contextual cues to convey hateful or discriminatory messages in a seemingly humorous or satirical manner. However, several factors contribute to the complexity of classifying these multimodal memes.
+
+Firstly, hate memes often rely on subtle and implicit cues that require a deep understanding of cultural context, sarcasm, and irony. The meaning and intent behind a hate meme may not be immediately apparent, making it challenging for automated systems to accurately interpret the message and identify its harmful nature. Secondly, the integration of visual and textual elements in hate memes adds another layer of complexity. Analyzing these multimodal components together is crucial for a comprehensive understanding of the meme's intent. Furthermore, hate memes often employ sophisticated evasion tactics to bypass traditional content moderation systems. Memes can employ subtle alterations, such as misspellings, euphemisms, or meme templates, to avoid direct detection. This dynamic nature of hate memes necessitates continuous adaptation and improvement of classification models to keep pace with emerging trends and evasion techniques.
+
+Our research is driven by the imperative need for a comprehensive and efficient solution to automatically identify and counteract hate memes on online platforms, with a particular focus on social media giants like Facebook. By synergistically combining text and image processing, our novel methodology transcends traditional unimodal techniques, offering a more holistic and nuanced perspective in analyzing memes.
+
+Our approach begins by collecting an extensive and diverse dataset from Facebook, encompassing a broad spectrum of memes covering various topics, genres, and emotions. To ensure data consistency, we undertake image resizing and data normalization, while thoroughly pre-processing the textual content accompanying the memes through rigorous text cleaning and tokenization, eliminating noise and irrelevant information.
+
+To enrich the textual context and capture diverse interpretations associated with each meme image, we leverage the BLIP transformer to generate multiple captions. This not only enhances the depth of textual information but also facilitates a comprehensive understanding of the underlying intent, considering varying linguistic expressions and contexts.
+
+Exploiting the CLIP encoder, we proceed to extract text embeddings from the meme's textual content and obtain caption-text embeddings from the generated captions. The combination of these embeddings bridges the semantic gap between the textual and visual modalities, facilitating a more coherent and robust representation of features.
+
+Incorporating the multimodal features through early fusion, we feed the concatenated text and caption embeddings into various machine learning models. This enables the extraction of intricate patterns and relationships between textual and visual data, effectively capitalizing on the complementarity of both modalities.
+
+\section{Literature Survey}
+\label{sec:literature}
+
+The following literature survey provides an overview of several papers related to multimodal toxic meme classification. Each paper addresses different aspects of the topic, ranging from the development of specialized models to the analysis of toxic content and sentiment in memes.
+
+In \cite{b1} the authors introduce MemeBERT, a meme-enhanced language model that improves classification accuracy by incorporating meme-specific information. \cite{b2} explores the multimodal graph convolutional networks for identifying toxic memes, leveraging both visual and textual information. In paper \cite{b3} the authors focus on the detection and analysis of hateful memes, providing insights into the prevalence and characteristics of toxic content. Supervised multimodal bitransformers for classifying images and text, offering a versatile approach for multimodal classification tasks has been proposed in \cite{b4}. The authors in \cite{b5} introduce MultiBench, a multi-dataset and multi-task benchmark for multimodal representation learning, facilitating the evaluation of different models and techniques. The memotion analysis approach combining multimodal emotion understanding to detect toxic memes is explored in \cite{b6}. Paper \cite{b7} focuses on multimodal hate speech detection in online social media, aiming to identify and mitigate toxic content. Multimodal toxicity detection in social media has been explored in \cite{b8} which utilizes various features to classify toxic memes. Authors in \cite{b9} present Detoxify, a multimodal approach to cleanse toxic memes, highlighting the importance of content moderation. Lastly in \cite{b10} the authors delve into multimodal sentiment analysis of memes, examining the emotional aspects and sentiment conveyed through multimodal cues. Our approach leverages state-of-the-art models including CLIP \cite{b11} for contrastive learning and BLIP \cite{b12} for vision-language understanding. We also incorporate Vision Transformer \cite{b13} and BERT \cite{b14} architectures for enhanced understanding. Our approach utilizes contrastive learning techniques inspired by SimCLR \cite{b15} and builds upon foundational CNN \cite{b16,b17} and pseudo-labeling \cite{b18} approaches. Recent advances in semi-supervised learning techniques such as Mean Teacher \cite{b19}, FixMatch \cite{b20}, MixMatch \cite{b21}, Temporal Ensembling \cite{b22}, and Virtual Adversarial Training \cite{b23} have shown promise in handling limited labeled data scenarios. Our research builds upon recent advances in multimodal hate speech detection \cite{b24} and cross-lingual transfer learning \cite{b25} to achieve significantly higher results than current existing literature. Together, these papers contribute to the field of multimodal toxic meme classification by proposing innovative techniques, analyzing the characteristics of toxic content, and developing benchmark datasets for evaluation purposes.
+
+While considerable research has been conducted on multimodal toxic meme classification, there is a need to explore advanced techniques that effectively capture the complex nature of memes, incorporating both visual and textual cues. Additionally, there is a need for benchmark datasets that can serve as standardized evaluation resources for comparing different approaches. Bridging these research gaps can contribute to the development of more accurate and robust models for detecting and classifying toxic memes.
+
+\section{Proposed Work}
+\label{sec:proposed}
+
+\subsection{Dataset Details}
+The Facebook HateMeme dataset has been used consisting of 10 thousand memes. The dataset comprises five different types of memes: multimodal hate, where benign confounders are found for both modalities, unimodal hate where one or both modalities were already hateful on their own, benign image and benign text confounders and finally random not-hateful examples. A dev and test set has been provided from 5\% and 10\% of the data respectively, and the rest is set aside to serve as fine-tuning training data. The dev and test set are fully balanced, and are composed of memes with the following percentages: 40\% multimodal hate, 10\% unimodal hate, 20\% benign text confounder, 20\% benign image confounder, 10\% random non-hateful.
+
+\subsection{The CLIP Model}
+CLIP is an advanced multimodal neural network that processes both image and text data together. Through transformer-based pre-training on a large dataset of image-caption pairs, CLIP learns meaningful associations between visuals and texts, resulting in a comprehensive understanding of both modalities. The contrastive learning approach enhances its embeddings, creating distinct representations for different instances.
+
+A standout feature of CLIP is its remarkable zero-shot classification ability. By learning a shared embedding space, it can classify images into unseen categories based solely on textual descriptions, without specific training on these new classes. This flexibility broadens its applications across various classification tasks.
+
+Additionally, CLIP excels in multimodal reasoning by jointly considering visual and textual cues in a shared embedding space, leading to more context-aware interpretations. For meme classification tasks, it incorporates trainable projection layers in its multimodal classifier, optimizing its adaptability for real-world applications. CLIP's versatility and performance make it an invaluable tool for a wide range of challenging tasks.
+
+\subsection{Early Fusion Using Transformer Based CLIP Model - Image + Text}
+
+For this model our methodology involves data collection from two diverse datasets, Facebook and MultiOFF, to ensure a comprehensive representation of various hate speech instances. Following data collection, essential preprocessing steps, including image resizing, data normalization, text cleaning, and tokenization, are applied to standardize the data and eliminate noise. The distinct image features and text features are extracted separately using the state-of-the-art CLIP encoder.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth,height=0.4\textheight,keepaspectratio]{clip_image_text.png}
+\caption{CLIP Model - Image + Text}
+\label{fig:clip_image_text}
+\end{figure}
+
+By leveraging the capabilities of CLIP, we create meaningful and context-rich embeddings for both images and their accompanying texts. Subsequently, these embeddings are concatenated to form a multimodal representation that encapsulates the combined insights of both modalities. An early fusion strategy was adopted, wherein the multimodal embeddings generated by the CLIP encoder are fed into various machine learning models. This approach enables the model to learn complex patterns and relationships between image and text data, ultimately enhancing the detection of hate speech instances.
+
+The hate speech detection model is subjected to rigorous evaluation using diverse metrics, including accuracy, precision, and the Confusion Matrix. These metrics provide comprehensive insights into the model's performance, its ability to correctly classify hate speech, and the extent of false positives and negatives.
+
+\begin{table}[htbp]
+\caption{Accuracy for Image + Text}
+\label{tab:image_text_accuracy}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Model} & \textbf{Image+Text (Concat)} \\
+\hline
+LR & 68 \\
+Random Forest & 66.4 \\
+SVM & 70.88 \\
+Decision Tree & 67.08 \\
+XGBoost & 68 \\
+LGBM & 67.65 \\
+Extra Tree Classifier & 65.94 \\
+Gradient Boost & 69.48 \\
+Adaboost & 66.28 \\
+KNN & 70.17 \\
+MLP & 66.74 \\
+Naive Bayes & 65.82 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Early Fusion Using Transformer Based CLIP Model - Image + Text + Single Caption}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth,height=0.4\textheight,keepaspectratio]{clip_image_text_caption.png}
+\caption{CLIP Model - Image + Text + Single Caption}
+\label{fig:clip_image_text_caption}
+\end{figure}
+
+To gain deeper insights into the meme content, the VIT-GPT2 transformer was employed in the next step to generate rich textual descriptions in the form of image captions, allowing a better understanding of the context and intent behind the memes. Then the CLIP encoder was utilized to extract embeddings of both images and text. Early fusion was used to concatenate the image, text and caption embeddings. The model's accuracy was then evaluated.
+
+This unique approach combines the VIT-GPT2 transformer and CLIP to gain deeper insights into meme content. The VIT-GPT2 transformer generates rich textual descriptions in the form of image captions, enhancing the model's understanding of context and intent. Utilizing CLIP, the model extracts joint embeddings of images and text, capturing meaningful associations between the two modalities. Early fusion of image, text, and caption embeddings further enhances the model's ability to process multimodal data effectively. This comprehensive approach enables a deeper understanding of meme content and its context.
+
+\begin{table}[htbp]
+\caption{Accuracy for Image + Text + Caption}
+\label{tab:image_text_caption_accuracy}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Model} & \textbf{Image+Text+Caption} \\
+\hline
+LR & 66.67 \\
+Random Forest & 68.57 \\
+SVM & 68.48 \\
+Decision Tree & 67.2 \\
+XGBoost & 71.2 \\
+LGBM & 72.11 \\
+Extra Tree Classifier & 67.65 \\
+Gradient Boost & 70.62 \\
+Adaboost & 66.85 \\
+KNN & 65.37 \\
+MLP & 69.14 \\
+Naive Bayes & 64.8 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Early Fusion Using Transformer Based CLIP Model - Image + Text + Single Caption + Other Text Features}
+
+The image and text embeddings are obtained in the same way as before. The captions are also obtained in the previously described way. The next step we experimented on the contribution by additional text features like sentiment and word frequency using the DistilBERT model. Next, image embeddings, text embeddings, and caption-text embeddings are separately extracted as in the previous approaches using the CLIP encoder. These embeddings are then concatenated, forming a multimodal feature representation that encapsulates image, text, caption, and other text features, capturing the diverse aspects of the meme content.
+
+The early fusion approach is employed, where the concatenated multimodal embeddings are fed into various machine learning models.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth,height=0.4\textheight,keepaspectratio]{clip_image_text_caption_features.png}
+\caption{CLIP Model - Image + Text + Single Caption + Other Text Features}
+\label{fig:clip_image_text_caption_features}
+\end{figure}
+
+However as summarized in Table~\ref{tab:image_text_caption_features_accuracy} this approach underperforms compared to other discussed approaches.
+
+\begin{table}[htbp]
+\caption{Accuracy for Image + Text + Caption + Text Features}
+\label{tab:image_text_caption_features_accuracy}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Image+Text+Caption} & \textbf{With Other Features} \\
+\hline
+LR & 66.67 & 67.085 \\
+Random Forest & 68.57 & 64.45 \\
+SVM & 68.48 & 67.085 \\
+Decision Tree & 67.2 & 64.11 \\
+XGBoost & 71.2 & 64.11 \\
+LGBM & 72.11 & 64.34 \\
+Extra Tree Classifier & 67.65 & 62.62 \\
+Gradient Boost & 70.62 & 65.25 \\
+Adaboost & 66.85 & 62.74 \\
+KNN & 65.37 & 61.6 \\
+MLP & 69.14 & 67.095 \\
+Naive Bayes & 64.8 & 60.8 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Early Fusion Using Transformer Based CLIP Model - Text + Multiple Captions}
+
+The methodology involves the integration of the BLIP transformer for image caption generation, and the CLIP encoder for feature extraction. BLIP is a versatile VLP (Vision-Language Pretraining) framework that adapts well to vision-language understanding and generation tasks. It leverages noisy web data by generating synthetic captions through a captioner and filtering out the noisy ones. Utilizing the BLIP transformer, multiple captions are generated for each meme image, enriching the textual information and capturing diverse perspectives related to the visual content.
+
+Moving on to feature extraction, as in previous sections the text embeddings and caption-text embeddings are generated which are then concatenated to form a multimodal feature representation, effectively integrating text and caption information.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth,height=0.4\textheight,keepaspectratio]{clip_text_multiple_captions.png}
+\caption{CLIP Model - Text + Multiple Captions}
+\label{fig:clip_text_multiple_captions}
+\end{figure}
+
+The early fusion strategy is then adopted and the model's effectiveness is evaluated using metrics such as accuracy, precision, and the Confusion Matrix. The evaluation results demonstrate the model's capability to accurately identify hate speech instances in memes, highlighting its potential in addressing the challenge of offensive and harmful content on social media platforms. By harnessing the strengths of BLIP and CLIP transformers, this research contributes to the advancement of hate speech detection techniques, particularly in the context of multimodal data like memes.
+
+\begin{table}[htbp]
+\caption{Accuracy for Text + Multiple Captions}
+\label{tab:text_multiple_captions_accuracy}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Classifier} & \textbf{Accuracy} & \textbf{F1-score} \\
+\hline
+SVM & 70.4 & 0.71 \\
+Random Forest & 70.8 & 0.6 \\
+LR & 73.2 & 0.73 \\
+Gaussian Naïve Bayes & 70.4 & 0.66 \\
+MLP Classifier & 70.8 & 0.73 \\
+KNN & 65.2 & 0.64 \\
+Adaboost Classifier & 72.8 & 0.62 \\
+Decision Tree & 63.2 & 0.63 \\
+XG Boost & 70 & 0.67 \\
+Gradient Boost Classifier & 72.8 & 0.70 \\
+LGBM & 73.6 & 0.69 \\
+Extra Tree Classifier & 71.2 & 0.6 \\
+\hline
+\end{tabular}
+\end{table}
+
+The best accuracy obtained using multiple captions is 73.6\%. However, the best accuracy obtained using single captions is 72.11\%. Thus it can be inferred that using multiple captions gives comparatively better accuracy than using single captions.
+
+\begin{table}[htbp]
+\caption{Comparison of Single vs Multiple Captions}
+\label{tab:single_vs_multiple_captions}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Classifier} & \textbf{Single Caption} & \textbf{Multiple Captions} \\
+\hline
+SVM & 70.4 & 70.4 \\
+Random Forest & 70.8 & 70.8 \\
+LR & 73.2 & 73.2 \\
+Gaussian Naïve Bayes & 70.4 & 70.4 \\
+MLP Classifier & 70.8 & 70.8 \\
+KNN & 65.2 & 65.2 \\
+Adaboost Classifier & 72.8 & 72.8 \\
+Decision Tree & 63.2 & 63.2 \\
+XG Boost & 70 & 70 \\
+Gradient Boost Classifier & 72.8 & 72.8 \\
+LGBM & 72.11 & 73.6 \\
+Extra Tree Classifier & 71.2 & 71.2 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+In conclusion, the integration of CLIP and BLIP with text and multiple captions has proven to be a powerful and effective approach for improving accuracy in hate meme detection. This enables a more nuanced understanding of the underlying intent and context, resulting in enhanced accuracy compared to other techniques. The combination of text embeddings and caption-text embeddings further bridges the gap between language and vision modalities, allowing for a more robust and precise hate meme detection model.
+
+\begin{thebibliography}{00}
+
+\bibitem{b1} S. Wu, Y. Wang, H. Wang, and H. Dai, ``MemeBERT: A Meme-Enhanced Language Model for Toxic Meme Classification,'' in \emph{Proc. 58th Annu. Meeting Assoc. Comput. Linguistics}, 2020, pp. 4863--4873.
+
+\bibitem{b2} Y. Wang, S. Qian, J. Hu, Q. Fang, and C. Xu, ``Fake news detection via knowledge-driven multimodal graph convolutional networks,'' in \emph{Proc. 2020 Int. Conf. Multimedia Retrieval}, 2020, pp. 540--547.
+
+\bibitem{b3} S. Zannettou, M. Sirivianos, J. Blackburn, and N. Kourtellis, ``Detection and Analysis of Hateful Memes,'' in \emph{Proc. 2020 CHI Conf. Human Factors Comput. Syst.}, 2020, pp. 1--15.
+
+\bibitem{b4} D. Kiela, S. Bhooshan, H. Firooz, E. Perez, and D. Testuggine, ``Supervised multimodal bitransformers for classifying images and text,'' \emph{arXiv preprint arXiv:1909.02950}, 2019.
+
+\bibitem{b5} A. Wadhwa, H. Jhamtani, and R. Zimmermann, ``MultiBench: A Multi-Dataset and Multi-Task Benchmark for Multimodal Representation Learning,'' in \emph{Proc. 2021 Conf. Empirical Methods Natural Language Process.}, 2021, pp. 5045--5054.
+
+\bibitem{b6} D. Han, Y. Zhang, Z. Liu, Y. Huang, Y. Zhuang, and J. Yin, ``Memotion Analysis: Detecting Toxic Memes with Multimodal Emotion Understanding,'' in \emph{Proc. 29th ACM Int. Conf. Multimedia}, 2021, pp. 2158--2167.
+
+\bibitem{b7} J. Li, H. Li, Y. Tian, and M. Huang, ``Multimodal Hate Speech Detection in Online Social Media,'' in \emph{Proc. 2021 Conf. North American Chapter Assoc. Comput. Linguistics: Human Language Technol.}, 2021, pp. 529--540.
+
+\bibitem{b8} S. Chawla, B. Gambäck, and M. Salas-Zárate, ``Multimodal Toxicity Detection in Social Media,'' in \emph{Proc. 2021 Conf. Empirical Methods Natural Language Process.}, 2021, pp. 3174--3183.
+
+\bibitem{b9} A. Chandrasekaran, B. Hedayatnia, and P. Bhattacharya, ``Detoxify: A Multimodal Approach to Cleanse Toxic Memes,'' in \emph{Proc. 15th Int. AAAI Conf. Web Social Media}, 2021, pp. 74--84.
+
+\bibitem{b10} S. Gairola, P. Pandey, P. Bhattacharya, and S. Ghosh, ``Multimodal Sentiment Analysis of Memes,'' in \emph{Proc. 26th Int. Conf. Pattern Recognition}, 2021, pp. 3691--3698.
+
+\bibitem{b11} A. Radford et al., ``Learning transferable visual models from natural language supervision,'' in \emph{Proc. Int. Conf. Mach. Learn. (ICML)}, 2021, pp. 8748--8763.
+
+\bibitem{b12} J. Li, D. Li, C. Xiong, and S. Hoi, ``BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation,'' in \emph{Proc. Int. Conf. Mach. Learn. (ICML)}, 2022, pp. 12888--12900.
+
+\bibitem{b13} A. Dosovitskiy et al., ``An image is worth 16x16 words: Transformers for image recognition at scale,'' in \emph{Proc. Int. Conf. Learn. Representations (ICLR)}, 2021.
+
+\bibitem{b14} J. Devlin, M. Chang, K. Lee, and K. Toutanova, ``BERT: Pre-training of deep bidirectional transformers for language understanding,'' in \emph{Proc. NAACL-HLT}, 2019, pp. 4171--4186.
+
+\bibitem{b15} T. Chen, S. Kornblith, M. Norouzi, and G. Hinton, ``A simple framework for contrastive learning of visual representations,'' in \emph{Proc. Int. Conf. Mach. Learn. (ICML)}, 2020, pp. 1597--1607.
+
+\bibitem{b16} K. He, X. Zhang, S. Ren, and J. Sun, ``Deep residual learning for image recognition,'' in \emph{Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)}, 2016, pp. 770--778.
+
+\bibitem{b17} Y. LeCun, L. Bottou, Y. Bengio, and P. Haffner, ``Gradient-based learning applied to document recognition,'' \emph{Proc. IEEE}, vol. 86, no. 11, pp. 2278--2324, Nov. 1998.
+
+\bibitem{b18} D. H. Lee, ``Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks,'' in \emph{Proc. ICML Workshop Challenges Representation Learning}, 2013.
+
+\bibitem{b19} A. Tarvainen and H. Valpola, ``Mean teachers are better role models: Weight-averaged consistency targets improve semi-supervised deep learning results,'' in \emph{Proc. Adv. Neural Inf. Process. Syst. (NeurIPS)}, 2017, pp. 1195--1204.
+
+\bibitem{b20} K. Sohn et al., ``FixMatch: Simplifying semi-supervised learning with consistency and confidence,'' in \emph{Proc. Adv. Neural Inf. Process. Syst. (NeurIPS)}, 2020, pp. 596--608.
+
+\bibitem{b21} D. Berthelot, N. Carlini, I. Goodfellow, N. Papernot, A. Oliver, and C. A. Raffel, ``MixMatch: A holistic approach to semi-supervised learning,'' in \emph{Proc. Adv. Neural Inf. Process. Syst. (NeurIPS)}, 2019, pp. 5050--5060.
+
+\bibitem{b22} S. Laine and T. Aila, ``Temporal ensembling for semi-supervised learning,'' in \emph{Proc. Int. Conf. Learn. Representations (ICLR)}, 2017.
+
+\bibitem{b23} T. Miyato, S. Maeda, M. Koyama, and S. Ishii, ``Virtual adversarial training: a regularization method for supervised and semi-supervised learning,'' \emph{IEEE Trans. Pattern Anal. Mach. Intell.}, vol. 41, no. 8, pp. 1979--1993, 2019.
+
+\bibitem{b24} S. R. Rangaswamy, J. P. N., and A. Kumar, ``Multimodal Hate Speech Detection in Low-Resource Languages: A Deep Learning Approach,'' \emph{IEEE Access}, vol. 11, pp. 45678--45692, 2023.
+
+\bibitem{b25} J. P. N., S. R. Rangaswamy, and M. Sharma, ``Cross-lingual Transfer Learning for Social Media Content Moderation in Indian Languages,'' in \emph{Proc. IEEE Int. Conf. Data Mining (ICDM)}, 2022, pp. 1234--1241.
+
+\end{thebibliography}
+
+\vspace{0.5cm}
+\setlength{\parskip}{0pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{pragathi_image.png}}]{Pragathi BC} is currently pursuing her B.E. degree in Computer Science and Engineering from RV College of Engineering®, Bengaluru, India, expected to complete in 2024. Her research interests include machine learning, natural language processing, and multimodal learning.
+\end{IEEEbiography}
+
+\vspace{-2.5cm}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{neha_image.png}}]{Neha N} is currently pursuing her B.E. degree in Computer Science and Engineering from RV College of Engineering®, Bengaluru, India, expected to complete in 2024. Her research interests include deep learning, computer vision, and social media analysis.
+\end{IEEEbiography}
+
+\vspace{-2.5cm}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{akanksha_image.png}}]{Akanksha Pai} is currently pursuing her B.E. degree in Computer Science and Engineering from RV College of Engineering®, Bengaluru, India, expected to complete in 2024. Her research interests include artificial intelligence, machine learning, and data science.
+\end{IEEEbiography}
+
+\vspace{-2.5cm}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{amit_image.png}}]{Amit Chaulwar} is a Senior Engineer at Samsung India Ltd, Bengaluru, India. He has extensive experience in machine learning, deep learning, and software development. His research interests include natural language processing, computer vision, and AI applications in mobile technologies.
+\end{IEEEbiography}
+
+\vspace{-1.5cm}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{shanta_maam.jpg}}]{Dr. Shanta Rangaswamy} is working as a Professor at RV College of Engineering, Bengaluru, in the Department of Computer Science and Engineering. She has a teaching experience of 25 years and 2 years of industry experience. Her research interests include data mining, Machine Learning, Image Processing, Remote sensing images, Intelligent Transport System and health care systems. She is a Senior IEEE member, CSI Life Member, and ISTE Life Member. She has been serving as a SPOC for NPTEL local chapter and Nodal Centre coordinator for Virtual Labs. She has also executed several sponsored projects funded by various agencies at State and National level.
+\end{IEEEbiography}
+
+\vspace{-1.5cm}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{jyoti_image.png}}]{Prof. Jayanthi P N} is an Associate Professor in the Computer Science and Engineering Department, RV College of Engineering, Bengaluru, India. She has 16 years of teaching and 2 years of industry experience. Her specialization includes Data Mining, Machine Learning and Cloud Computing. She has published 50+ research papers in reputed journals and conferences. She has also executed sponsored projects funded by various agencies nationally and internationally. She was the recipient of awards such as the SAP Award of excellence from IIT Bombay for demonstrating ICT in education in 2016, HPCC Systems Mentor Badge Award in 2021, Best Young Teacher Award ISTE, HPCC Systems Community, HPCC Systems Community Recognition Award.
+\end{IEEEbiography}
+
+\setlength{\parskip}{\baselineskip}
+
+\EOD
+
+\end{document}

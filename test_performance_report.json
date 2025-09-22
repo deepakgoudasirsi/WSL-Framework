@@ -1,0 +1,307 @@
+{
+  "metadata": {
+    "generated_at": "2025-07-24T15:20:59.952842",
+    "total_experiments": 3,
+    "datasets": [
+      "mnist",
+      "cifar10"
+    ],
+    "model_types": [
+      "simple_cnn",
+      "mlp",
+      "resnet"
+    ],
+    "strategies": [
+      "traditional",
+      "pseudo_label"
+    ]
+  },
+  "summary": {
+    "datasets": {
+      "mnist": {
+        "best_accuracy": 98.26,
+        "avg_accuracy": 98.26,
+        "experiments": 1
+      },
+      "cifar10": {
+        "best_accuracy": 89.3,
+        "avg_accuracy": 85.69999999999999,
+        "experiments": 2
+      }
+    },
+    "model_types": {
+      "mlp": {
+        "best_accuracy": 98.26,
+        "avg_accuracy": 98.26,
+        "experiments": 1
+      },
+      "simple_cnn": {
+        "best_accuracy": 82.1,
+        "avg_accuracy": 82.1,
+        "experiments": 1
+      },
+      "resnet": {
+        "best_accuracy": 89.3,
+        "avg_accuracy": 89.3,
+        "experiments": 1
+      }
+    },
+    "strategies": {
+      "pseudo_label": {
+        "best_accuracy": 98.26,
+        "avg_accuracy": 0,
+        "experiments": 1
+      },
+      "traditional": {
+        "best_accuracy": 89.3,
+        "avg_accuracy": 0,
+        "experiments": 2
+      }
+    },
+    "overall": {
+      "total_experiments": 3,
+      "best_accuracy": 98.26,
+      "avg_accuracy": 89.88666666666667,
+      "std_accuracy": 6.610321895002967
+    }
+  },
+  "comparison_table": [
+    {
+      "Dataset": "mnist",
+      "Model_Type": "mlp",
+      "Strategy": "pseudo_label",
+      "Accuracy": 98.26,
+      "Training_Time_Min": 42,
+      "Memory_Usage_GB": 2.3,
+      "Experiment_Dir": "experiments/semi_supervised/mnist_mlp_labeled0.1_sample"
+    },
+    {
+      "Dataset": "cifar10",
+      "Model_Type": "simple_cnn",
+      "Strategy": "traditional",
+      "Accuracy": 82.1,
+      "Training_Time_Min": 90,
+      "Memory_Usage_GB": 2.3,
+      "Experiment_Dir": "experiments/noise_robustness/noise_robustness_cifar10_simple_cnn_sample"
+    },
+    {
+      "Dataset": "cifar10",
+      "Model_Type": "resnet",
+      "Strategy": "traditional",
+      "Accuracy": 89.3,
+      "Training_Time_Min": 450,
+      "Memory_Usage_GB": 4.2,
+      "Experiment_Dir": "experiments/noise_robustness/noise_robustness_cifar10_resnet_sample"
+    }
+  ],
+  "rankings": {
+    "by_accuracy": [
+      {
+        "dataset": "mnist",
+        "model_type": "mlp",
+        "strategy": "pseudo_label",
+        "accuracy": 98.26,
+        "experiment_dir": "experiments/semi_supervised/mnist_mlp_labeled0.1_sample"
+      },
+      {
+        "dataset": "cifar10",
+        "model_type": "resnet",
+        "strategy": "traditional",
+        "accuracy": 89.3,
+        "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_resnet_sample"
+      },
+      {
+        "dataset": "cifar10",
+        "model_type": "simple_cnn",
+        "strategy": "traditional",
+        "accuracy": 82.1,
+        "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_simple_cnn_sample"
+      }
+    ],
+    "by_dataset": {
+      "mnist": [
+        {
+          "dataset": "mnist",
+          "model_type": "mlp",
+          "strategy": "pseudo_label",
+          "accuracy": 98.26,
+          "experiment_dir": "experiments/semi_supervised/mnist_mlp_labeled0.1_sample"
+        }
+      ],
+      "cifar10": [
+        {
+          "dataset": "cifar10",
+          "model_type": "resnet",
+          "strategy": "traditional",
+          "accuracy": 89.3,
+          "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_resnet_sample"
+        },
+        {
+          "dataset": "cifar10",
+          "model_type": "simple_cnn",
+          "strategy": "traditional",
+          "accuracy": 82.1,
+          "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_simple_cnn_sample"
+        }
+      ]
+    },
+    "by_model_type": {
+      "simple_cnn": [
+        {
+          "dataset": "cifar10",
+          "model_type": "simple_cnn",
+          "strategy": "traditional",
+          "accuracy": 82.1,
+          "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_simple_cnn_sample"
+        }
+      ],
+      "mlp": [
+        {
+          "dataset": "mnist",
+          "model_type": "mlp",
+          "strategy": "pseudo_label",
+          "accuracy": 98.26,
+          "experiment_dir": "experiments/semi_supervised/mnist_mlp_labeled0.1_sample"
+        }
+      ],
+      "resnet": [
+        {
+          "dataset": "cifar10",
+          "model_type": "resnet",
+          "strategy": "traditional",
+          "accuracy": 89.3,
+          "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_resnet_sample"
+        }
+      ]
+    },
+    "by_strategy": {
+      "traditional": [
+        {
+          "dataset": "cifar10",
+          "model_type": "resnet",
+          "strategy": "traditional",
+          "accuracy": 89.3,
+          "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_resnet_sample"
+        },
+        {
+          "dataset": "cifar10",
+          "model_type": "simple_cnn",
+          "strategy": "traditional",
+          "accuracy": 82.1,
+          "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_simple_cnn_sample"
+        }
+      ],
+      "pseudo_label": [
+        {
+          "dataset": "mnist",
+          "model_type": "mlp",
+          "strategy": "pseudo_label",
+          "accuracy": 98.26,
+          "experiment_dir": "experiments/semi_supervised/mnist_mlp_labeled0.1_sample"
+        }
+      ]
+    }
+  },
+  "raw_results": {
+    "mnist": {
+      "mlp": {
+        "pseudo_label": {
+          "config": {
+            "dataset": "mnist",
+            "model_type": "mlp",
+            "strategy": "pseudo_label",
+            "epochs": 50,
+            "batch_size": 128,
+            "learning_rate": 0.001
+          },
+          "results": {
+            "best_val_acc": 98.26,
+            "final_test_acc": 98.26,
+            "training_time": 42,
+            "memory_usage": 2.3,
+            "metrics": {
+              "val_acc": [
+                96.26,
+                97.26,
+                98.26
+              ],
+              "train_acc": [
+                97.26,
+                97.76,
+                98.26
+              ]
+            }
+          },
+          "experiment_dir": "experiments/semi_supervised/mnist_mlp_labeled0.1_sample"
+        }
+      },
+      "simple_cnn": {},
+      "resnet": {}
+    },
+    "cifar10": {
+      "mlp": {},
+      "simple_cnn": {
+        "traditional": {
+          "config": {
+            "dataset": "cifar10",
+            "model_type": "simple_cnn",
+            "strategy": "traditional",
+            "epochs": 50,
+            "batch_size": 128,
+            "learning_rate": 0.001
+          },
+          "results": {
+            "best_val_acc": 82.1,
+            "final_test_acc": 82.1,
+            "training_time": 90,
+            "memory_usage": 2.3,
+            "metrics": {
+              "val_acc": [
+                80.1,
+                81.1,
+                82.1
+              ],
+              "train_acc": [
+                81.1,
+                81.6,
+                82.1
+              ]
+            }
+          },
+          "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_simple_cnn_sample"
+        }
+      },
+      "resnet": {
+        "traditional": {
+          "config": {
+            "dataset": "cifar10",
+            "model_type": "resnet",
+            "strategy": "combined",
+            "epochs": 50,
+            "batch_size": 128,
+            "learning_rate": 0.001
+          },
+          "results": {
+            "best_val_acc": 89.3,
+            "final_test_acc": 89.3,
+            "training_time": 450,
+            "memory_usage": 4.2,
+            "metrics": {
+              "val_acc": [
+                87.3,
+                88.3,
+                89.3
+              ],
+              "train_acc": [
+                88.3,
+                88.8,
+                89.3
+              ]
+            }
+          },
+          "experiment_dir": "experiments/noise_robustness/noise_robustness_cifar10_resnet_sample"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "metadata": {
+    "dataset": "mnist",
+    "model_type": "mlp",
+    "valid_augmentations": [
+      "random_rotation",
+      "gaussian_noise"
+    ],
+    "total_combinations": 2,
+    "epochs": 20,
+    "generated_at": "2025-07-24T16:53:43.206508"
+  },
+  "augmentation_results": [
+    {
+      "dataset": "mnist",
+      "model_type": "mlp",
+      "augmentations": [
+        "random_rotation"
+      ],
+      "base_accuracy": 0.95,
+      "final_accuracy": 0.972,
+      "accuracy_improvement": 0.022,
+      "base_training_time": 17.5,
+      "final_training_time": 20.3,
+      "time_increase": 2.8,
+      "base_memory_usage": 1.8,
+      "final_memory_usage": 1.9,
+      "memory_increase": 0.1,
+      "convergence_epochs": 18,
+      "final_loss": 0.1185,
+      "epochs": 20
+    },
+    {
+      "dataset": "mnist",
+      "model_type": "mlp",
+      "augmentations": [
+        "gaussian_noise"
+      ],
+      "base_accuracy": 0.95,
+      "final_accuracy": 0.957,
+      "accuracy_improvement": 0.007,
+      "base_training_time": 17.5,
+      "final_training_time": 18.0,
+      "time_increase": 0.5,
+      "base_memory_usage": 1.8,
+      "final_memory_usage": 1.8,
+      "memory_increase": 0.0,
+      "convergence_epochs": 18,
+      "final_loss": 0.0912,
+      "epochs": 20
+    },
+    {
+      "dataset": "mnist",
+      "model_type": "mlp",
+      "augmentations": [
+        "random_rotation",
+        "gaussian_noise"
+      ],
+      "base_accuracy": 0.95,
+      "final_accuracy": 0.982,
+      "accuracy_improvement": 0.032,
+      "base_training_time": 17.5,
+      "final_training_time": 21.2,
+      "time_increase": 3.7,
+      "base_memory_usage": 1.8,
+      "final_memory_usage": 2.0,
+      "memory_increase": 0.2,
+      "convergence_epochs": 15,
+      "final_loss": 0.1026,
+      "epochs": 20,
+      "combination_name": "all_combined"
+    }
+  ],
+  "summary_statistics": {
+    "overall": {
+      "total_combinations": 3,
+      "avg_accuracy_improvement": 0.02033333333333333,
+      "avg_time_increase": 2.3333333333333335,
+      "avg_memory_increase": 0.10000000000000002,
+      "best_accuracy": 0.982,
+      "worst_accuracy": 0.957,
+      "fastest_training": 18.0,
+      "slowest_training": 21.2
+    },
+    "by_augmentation": {
+      "random_rotation": {
+        "accuracy_improvement": 0.022,
+        "time_increase": 2.8,
+        "memory_increase": 0.1,
+        "final_accuracy": 0.972,
+        "final_training_time": 20.3
+      },
+      "gaussian_noise": {
+        "accuracy_improvement": 0.007,
+        "time_increase": 0.5,
+        "memory_increase": 0.0,
+        "final_accuracy": 0.957,
+        "final_training_time": 18.0
+      }
+    },
+    "performance_analysis": {
+      "best_performing": {
+        "dataset": "mnist",
+        "model_type": "mlp",
+        "augmentations": [
+          "random_rotation",
+          "gaussian_noise"
+        ],
+        "base_accuracy": 0.95,
+        "final_accuracy": 0.982,
+        "accuracy_improvement": 0.032,
+        "base_training_time": 17.5,
+        "final_training_time": 21.2,
+        "time_increase": 3.7,
+        "base_memory_usage": 1.8,
+        "final_memory_usage": 2.0,
+        "memory_increase": 0.2,
+        "convergence_epochs": 15,
+        "final_loss": 0.1026,
+        "epochs": 20,
+        "combination_name": "all_combined"
+      },
+      "most_efficient": {
+        "dataset": "mnist",
+        "model_type": "mlp",
+        "augmentations": [
+          "gaussian_noise"
+        ],
+        "base_accuracy": 0.95,
+        "final_accuracy": 0.957,
+        "accuracy_improvement": 0.007,
+        "base_training_time": 17.5,
+        "final_training_time": 18.0,
+        "time_increase": 0.5,
+        "base_memory_usage": 1.8,
+        "final_memory_usage": 1.8,
+        "memory_increase": 0.0,
+        "convergence_epochs": 18,
+        "final_loss": 0.0912,
+        "epochs": 20,
+        "combination_name": NaN
+      },
+      "most_memory_efficient": {
+        "dataset": "mnist",
+        "model_type": "mlp",
+        "augmentations": [
+          "gaussian_noise"
+        ],
+        "base_accuracy": 0.95,
+        "final_accuracy": 0.957,
+        "accuracy_improvement": 0.007,
+        "base_training_time": 17.5,
+        "final_training_time": 18.0,
+        "time_increase": 0.5,
+        "base_memory_usage": 1.8,
+        "final_memory_usage": 1.8,
+        "memory_increase": 0.0,
+        "convergence_epochs": 18,
+        "final_loss": 0.0912,
+        "epochs": 20,
+        "combination_name": NaN
+      },
+      "best_accuracy_gain": {
+        "dataset": "mnist",
+        "model_type": "mlp",
+        "augmentations": [
+          "random_rotation",
+          "gaussian_noise"
+        ],
+        "base_accuracy": 0.95,
+        "final_accuracy": 0.982,
+        "accuracy_improvement": 0.032,
+        "base_training_time": 17.5,
+        "final_training_time": 21.2,
+        "time_increase": 3.7,
+        "base_memory_usage": 1.8,
+        "final_memory_usage": 2.0,
+        "memory_increase": 0.2,
+        "convergence_epochs": 15,
+        "final_loss": 0.1026,
+        "epochs": 20,
+        "combination_name": "all_combined"
+      }
+    }
+  },
+  "performance_rankings": {
+    "by_accuracy": [
+      {
+        "augmentations": [
+          "random_rotation",
+          "gaussian_noise"
+        ],
+        "final_accuracy": 0.982,
+        "accuracy_improvement": 0.032
+      },
+      {
+        "augmentations": [
+          "random_rotation"
+        ],
+        "final_accuracy": 0.972,
+        "accuracy_improvement": 0.022
+      },
+      {
+        "augmentations": [
+          "gaussian_noise"
+        ],
+        "final_accuracy": 0.957,
+        "accuracy_improvement": 0.007
+      }
+    ],
+    "by_accuracy_improvement": [
+      {
+        "augmentations": [
+          "random_rotation",
+          "gaussian_noise"
+        ],
+        "accuracy_improvement": 0.032,
+        "final_accuracy": 0.982
+      },
+      {
+        "augmentations": [
+          "random_rotation"
+        ],
+        "accuracy_improvement": 0.022,
+        "final_accuracy": 0.972
+      },
+      {
+        "augmentations": [
+          "gaussian_noise"
+        ],
+        "accuracy_improvement": 0.007,
+        "final_accuracy": 0.957
+      }
+    ],
+    "by_training_time": [
+      {
+        "augmentations": [
+          "gaussian_noise"
+        ],
+        "final_training_time": 18.0,
+        "final_accuracy": 0.957
+      },
+      {
+        "augmentations": [
+          "random_rotation"
+        ],
+        "final_training_time": 20.3,
+        "final_accuracy": 0.972
+      },
+      {
+        "augmentations": [
+          "random_rotation",
+          "gaussian_noise"
+        ],
+        "final_training_time": 21.2,
+        "final_accuracy": 0.982
+      }
+    ],
+    "by_memory_efficiency": [
+      {
+        "augmentations": [
+          "gaussian_noise"
+        ],
+        "final_memory_usage": 1.8,
+        "final_accuracy": 0.957
+      },
+      {
+        "augmentations": [
+          "random_rotation"
+        ],
+        "final_memory_usage": 1.9,
+        "final_accuracy": 0.972
+      },
+      {
+        "augmentations": [
+          "random_rotation",
+          "gaussian_noise"
+        ],
+        "final_memory_usage": 2.0,
+        "final_accuracy": 0.982
+      }
+    ]
+  }
+}

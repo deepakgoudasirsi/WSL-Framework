@@ -1,0 +1,416 @@
+{
+  "metadata": {
+    "generated_at": "2025-07-24T16:44:25.506393",
+    "strategies": [
+      "consistency",
+      "pseudo_label",
+      "co_training",
+      "combined"
+    ],
+    "datasets": [
+      "cifar10",
+      "mnist"
+    ],
+    "total_combinations": 8
+  },
+  "feature_engineering_results": [
+    {
+      "strategy": "consistency",
+      "dataset": "cifar10",
+      "feature_type": "Teacher-Student Features",
+      "extraction_time": 35.7,
+      "memory_usage": 101,
+      "quality_score": 0.73,
+      "feature_completeness": 0.74,
+      "feature_relevance": 0.7,
+      "feature_diversity": 0.67,
+      "computational_efficiency": 0.73,
+      "training_time": 36,
+      "convergence_epochs": 67,
+      "robustness_score": 0.73,
+      "scalability": "High",
+      "total_samples": 50000,
+      "labeled_samples": 5000,
+      "unlabeled_samples": 45000,
+      "features_extracted": 3072,
+      "augmentation_applied": "Rotation, Flip, Crop, Color Jitter"
+    },
+    {
+      "strategy": "consistency",
+      "dataset": "mnist",
+      "feature_type": "Teacher-Student Features",
+      "extraction_time": 30.8,
+      "memory_usage": 87,
+      "quality_score": 1.0,
+      "feature_completeness": 1.0,
+      "feature_relevance": 1.0,
+      "feature_diversity": 0.97,
+      "computational_efficiency": 1.0,
+      "training_time": 31,
+      "convergence_epochs": 96,
+      "robustness_score": 1.0,
+      "scalability": "High",
+      "total_samples": 60000,
+      "labeled_samples": 6000,
+      "unlabeled_samples": 54000,
+      "features_extracted": 784,
+      "augmentation_applied": "Rotation, Shift, Gaussian Noise"
+    },
+    {
+      "strategy": "pseudo_label",
+      "dataset": "cifar10",
+      "feature_type": "Confidence Features",
+      "extraction_time": 42.8,
+      "memory_usage": 106,
+      "quality_score": 0.99,
+      "feature_completeness": 1.0,
+      "feature_relevance": 0.96,
+      "feature_diversity": 0.97,
+      "computational_efficiency": 1.0,
+      "training_time": 58,
+      "convergence_epochs": 101,
+      "robustness_score": 0.99,
+      "scalability": "Medium",
+      "total_samples": 50000,
+      "labeled_samples": 5000,
+      "unlabeled_samples": 45000,
+      "features_extracted": 3072,
+      "augmentation_applied": "Rotation, Flip, Crop, Color Jitter"
+    },
+    {
+      "strategy": "pseudo_label",
+      "dataset": "mnist",
+      "feature_type": "Confidence Features",
+      "extraction_time": 21.3,
+      "memory_usage": 53,
+      "quality_score": 0.82,
+      "feature_completeness": 0.83,
+      "feature_relevance": 0.8,
+      "feature_diversity": 0.81,
+      "computational_efficiency": 0.87,
+      "training_time": 29,
+      "convergence_epochs": 84,
+      "robustness_score": 0.82,
+      "scalability": "Medium",
+      "total_samples": 60000,
+      "labeled_samples": 6000,
+      "unlabeled_samples": 54000,
+      "features_extracted": 784,
+      "augmentation_applied": "Rotation, Shift, Gaussian Noise"
+    },
+    {
+      "strategy": "co_training",
+      "dataset": "cifar10",
+      "feature_type": "Multi-View Features",
+      "extraction_time": 46.7,
+      "memory_usage": 140,
+      "quality_score": 0.84,
+      "feature_completeness": 0.86,
+      "feature_relevance": 0.82,
+      "feature_diversity": 0.81,
+      "computational_efficiency": 0.79,
+      "training_time": 61,
+      "convergence_epochs": 69,
+      "robustness_score": 0.84,
+      "scalability": "Medium",
+      "total_samples": 50000,
+      "labeled_samples": 5000,
+      "unlabeled_samples": 45000,
+      "features_extracted": 3072,
+      "augmentation_applied": "Rotation, Flip, Crop, Color Jitter"
+    },
+    {
+      "strategy": "co_training",
+      "dataset": "mnist",
+      "feature_type": "Multi-View Features",
+      "extraction_time": 35.2,
+      "memory_usage": 105,
+      "quality_score": 1.0,
+      "feature_completeness": 1.0,
+      "feature_relevance": 1.0,
+      "feature_diversity": 1.0,
+      "computational_efficiency": 0.99,
+      "training_time": 46,
+      "convergence_epochs": 87,
+      "robustness_score": 1.0,
+      "scalability": "Medium",
+      "total_samples": 60000,
+      "labeled_samples": 6000,
+      "unlabeled_samples": 54000,
+      "features_extracted": 784,
+      "augmentation_applied": "Rotation, Shift, Gaussian Noise"
+    },
+    {
+      "strategy": "combined",
+      "dataset": "cifar10",
+      "feature_type": "Hybrid Features",
+      "extraction_time": 73.1,
+      "memory_usage": 222,
+      "quality_score": 1.0,
+      "feature_completeness": 1.0,
+      "feature_relevance": 1.0,
+      "feature_diversity": 1.0,
+      "computational_efficiency": 0.98,
+      "training_time": 81,
+      "convergence_epochs": 95,
+      "robustness_score": 1.0,
+      "scalability": "High",
+      "total_samples": 50000,
+      "labeled_samples": 5000,
+      "unlabeled_samples": 45000,
+      "features_extracted": 3072,
+      "augmentation_applied": "Rotation, Flip, Crop, Color Jitter"
+    },
+    {
+      "strategy": "combined",
+      "dataset": "mnist",
+      "feature_type": "Hybrid Features",
+      "extraction_time": 41.3,
+      "memory_usage": 125,
+      "quality_score": 0.98,
+      "feature_completeness": 1.0,
+      "feature_relevance": 0.97,
+      "feature_diversity": 0.95,
+      "computational_efficiency": 0.92,
+      "training_time": 46,
+      "convergence_epochs": 89,
+      "robustness_score": 0.98,
+      "scalability": "High",
+      "total_samples": 60000,
+      "labeled_samples": 6000,
+      "unlabeled_samples": 54000,
+      "features_extracted": 784,
+      "augmentation_applied": "Rotation, Shift, Gaussian Noise"
+    }
+  ],
+  "summary_statistics": {
+    "by_strategy": {
+      "consistency": {
+        "avg_extraction_time": 33.25,
+        "avg_memory_usage": 94.0,
+        "avg_quality_score": 0.865,
+        "avg_computational_efficiency": 0.865,
+        "avg_training_time": 33.5,
+        "avg_robustness_score": 0.865
+      },
+      "pseudo_label": {
+        "avg_extraction_time": 32.05,
+        "avg_memory_usage": 79.5,
+        "avg_quality_score": 0.905,
+        "avg_computational_efficiency": 0.935,
+        "avg_training_time": 43.5,
+        "avg_robustness_score": 0.905
+      },
+      "co_training": {
+        "avg_extraction_time": 40.95,
+        "avg_memory_usage": 122.5,
+        "avg_quality_score": 0.9199999999999999,
+        "avg_computational_efficiency": 0.89,
+        "avg_training_time": 53.5,
+        "avg_robustness_score": 0.9199999999999999
+      },
+      "combined": {
+        "avg_extraction_time": 57.199999999999996,
+        "avg_memory_usage": 173.5,
+        "avg_quality_score": 0.99,
+        "avg_computational_efficiency": 0.95,
+        "avg_training_time": 63.5,
+        "avg_robustness_score": 0.99
+      }
+    },
+    "by_dataset": {
+      "cifar10": {
+        "avg_extraction_time": 49.575,
+        "avg_memory_usage": 142.25,
+        "avg_quality_score": 0.89,
+        "avg_computational_efficiency": 0.875,
+        "avg_training_time": 59.0,
+        "avg_robustness_score": 0.89
+      },
+      "mnist": {
+        "avg_extraction_time": 32.150000000000006,
+        "avg_memory_usage": 92.5,
+        "avg_quality_score": 0.95,
+        "avg_computational_efficiency": 0.9450000000000001,
+        "avg_training_time": 38.0,
+        "avg_robustness_score": 0.95
+      }
+    },
+    "overall": {
+      "total_combinations": 8,
+      "avg_extraction_time": 40.8625,
+      "avg_memory_usage": 117.375,
+      "avg_quality_score": 0.9199999999999999,
+      "avg_computational_efficiency": 0.9099999999999999,
+      "avg_training_time": 48.5,
+      "avg_robustness_score": 0.9199999999999999,
+      "best_quality_score": 1.0,
+      "fastest_extraction": 21.3,
+      "lowest_memory_usage": 53
+    }
+  },
+  "performance_rankings": {
+    "by_quality_score": [
+      {
+        "strategy": "consistency",
+        "dataset": "mnist",
+        "quality_score": 1.0
+      },
+      {
+        "strategy": "co_training",
+        "dataset": "mnist",
+        "quality_score": 1.0
+      },
+      {
+        "strategy": "combined",
+        "dataset": "cifar10",
+        "quality_score": 1.0
+      },
+      {
+        "strategy": "pseudo_label",
+        "dataset": "cifar10",
+        "quality_score": 0.99
+      },
+      {
+        "strategy": "combined",
+        "dataset": "mnist",
+        "quality_score": 0.98
+      }
+    ],
+    "by_extraction_time": [
+      {
+        "strategy": "pseudo_label",
+        "dataset": "mnist",
+        "extraction_time": 21.3
+      },
+      {
+        "strategy": "consistency",
+        "dataset": "mnist",
+        "extraction_time": 30.8
+      },
+      {
+        "strategy": "co_training",
+        "dataset": "mnist",
+        "extraction_time": 35.2
+      },
+      {
+        "strategy": "consistency",
+        "dataset": "cifar10",
+        "extraction_time": 35.7
+      },
+      {
+        "strategy": "combined",
+        "dataset": "mnist",
+        "extraction_time": 41.3
+      }
+    ],
+    "by_memory_usage": [
+      {
+        "strategy": "pseudo_label",
+        "dataset": "mnist",
+        "memory_usage": 53
+      },
+      {
+        "strategy": "consistency",
+        "dataset": "mnist",
+        "memory_usage": 87
+      },
+      {
+        "strategy": "consistency",
+        "dataset": "cifar10",
+        "memory_usage": 101
+      },
+      {
+        "strategy": "co_training",
+        "dataset": "mnist",
+        "memory_usage": 105
+      },
+      {
+        "strategy": "pseudo_label",
+        "dataset": "cifar10",
+        "memory_usage": 106
+      }
+    ],
+    "by_computational_efficiency": [
+      {
+        "strategy": "consistency",
+        "dataset": "mnist",
+        "computational_efficiency": 1.0
+      },
+      {
+        "strategy": "pseudo_label",
+        "dataset": "cifar10",
+        "computational_efficiency": 1.0
+      },
+      {
+        "strategy": "co_training",
+        "dataset": "mnist",
+        "computational_efficiency": 0.99
+      },
+      {
+        "strategy": "combined",
+        "dataset": "cifar10",
+        "computational_efficiency": 0.98
+      },
+      {
+        "strategy": "combined",
+        "dataset": "mnist",
+        "computational_efficiency": 0.92
+      }
+    ],
+    "by_robustness_score": [
+      {
+        "strategy": "consistency",
+        "dataset": "mnist",
+        "robustness_score": 1.0
+      },
+      {
+        "strategy": "co_training",
+        "dataset": "mnist",
+        "robustness_score": 1.0
+      },
+      {
+        "strategy": "combined",
+        "dataset": "cifar10",
+        "robustness_score": 1.0
+      },
+      {
+        "strategy": "pseudo_label",
+        "dataset": "cifar10",
+        "robustness_score": 0.99
+      },
+      {
+        "strategy": "combined",
+        "dataset": "mnist",
+        "robustness_score": 0.98
+      }
+    ],
+    "by_training_time": [
+      {
+        "strategy": "pseudo_label",
+        "dataset": "mnist",
+        "training_time": 29
+      },
+      {
+        "strategy": "consistency",
+        "dataset": "mnist",
+        "training_time": 31
+      },
+      {
+        "strategy": "consistency",
+        "dataset": "cifar10",
+        "training_time": 36
+      },
+      {
+        "strategy": "co_training",
+        "dataset": "mnist",
+        "training_time": 46
+      },
+      {
+        "strategy": "combined",
+        "dataset": "mnist",
+        "training_time": 46
+      }
+    ]
+  }
+}
