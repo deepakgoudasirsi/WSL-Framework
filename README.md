@@ -61,9 +61,6 @@ The framework achieves state-of-the-art performance:
 - **MNIST**: 98.7% accuracy with 10% labeled data
 - **CIFAR-10**: 89.3% accuracy with 10% labeled data
 
-## Documentation
-
-For detailed information, see `MAJOR_PROJECT_REPORT.md` which contains the complete project documentation including methodology, implementation details, and experimental results.
 
 ## License
 
